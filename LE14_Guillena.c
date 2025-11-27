@@ -8,6 +8,11 @@ int main() {
     char name[50];
     char section[50];
     
+    if (fptr == NULL) {
+        printf("Error file not found!");
+        return 1;
+    }
+    
     while (1) {
         printf("Enter Student Number: ");
         scanf("%d", &studentNumber);
@@ -24,17 +29,18 @@ int main() {
         fprintf(fptr, "Complete Name: %s", name);
         fprintf(fptr, "Section: %s\n", section);
 
-        printf("\n\nRecord added and saved successfully");
+        printf("\nRecord added and saved successfully.");
     
         int input;
         printf("Add another student? [Enter 1 for Yes, 0 for No]\n");
         scanf("%d", &input);
         getchar();
         if (input == 0) {
-            printf("All student records have been saved");
+            printf("All student records have been saved.");
             break;
         }
     }
     
+    fclose(fptr);
     return 0;
 }
